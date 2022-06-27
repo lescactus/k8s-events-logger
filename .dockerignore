@@ -2,8 +2,11 @@ main
 k8s-events-logger
 .vscode
 .devcontainer
+.github
 deploy/
+testsdata/
 *.yaml
+*.md
 Dockerfile
 .dockerignore
 .gitignore
