@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+metadata:
+  name: k8s-events-logger
+build:
+  local:
+    push: false
+  artifacts:
+  - image: k8s-events-logger
+    docker:
+      dockerfile: Dockerfile
+  tagPolicy:
+    dateTime:
+      format: 2006-01-02_15-04-05.999_MST
+deploy:
+  kubectl:
+    manifests:
+    - deploy/k8s/deployment.yaml
+    - deploy/k8s/rbac.yaml
+    - deploy/k8s/serviceaccount.yaml

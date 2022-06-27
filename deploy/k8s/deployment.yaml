@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-events-logger
+  labels:
+    app: k8s-events-logger
+spec:
+  selector:
+    matchLabels:
+      app: k8s-events-logger
+  template:
+    metadata:
+      labels:
+        app: k8s-events-logger
+    spec:
+      containers:
+      - name: k8s-events-logger
+        image: k8s-events-logger
+        resources:
+          requests:
+            memory: "8Mi"
+            cpu: "10m"
+          limits:
+            memory: "16Mi"
+            cpu: "100m"
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
+      serviceAccountName: k8s-events-logger

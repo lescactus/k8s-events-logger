@@ -1,0 +1,9 @@
+main
+k8s-events-logger
+.vscode
+.devcontainer
+deploy/
+*.yaml
+Dockerfile
+.dockerignore
+.gitignore
