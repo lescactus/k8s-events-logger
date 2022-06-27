@@ -69,6 +69,12 @@ func main() {
 
 	defer runtime.HandleCrash()
 
+	log.Printf("Starting %s. Output = %s, Namespaces to watch %v\n",
+		AppName,
+		cfg.GetString("OUTPUT"),
+		namespacestoWatch,
+	)
+
 	// Start informer
 	go factory.Start(stopper)
 
@@ -100,15 +106,15 @@ func AddEvent(obj interface{}) {
 
 	switch cfg.GetString("OUTPUT") {
 	case "console":
-		log.Println(FormatConsole(event))
+		fmt.Println(FormatConsole(event))
 	case "json":
 		b, err := FormatJSON(event)
 		if err != nil {
 			log.Fatalln(err.Error())
 		}
-		log.Println(string(b))
+		fmt.Println(string(b))
 	default:
-		log.Println(FormatConsole(event))
+		fmt.Println(FormatConsole(event))
 	}
 }
 
