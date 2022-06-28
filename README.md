@@ -19,7 +19,7 @@ Enters `k8s-events-logger`: `k8s-events-logger` is meant to be running inside a 
 
 * `OUTPUT`(default value: `console`). Define the output format of event logs. Available values are `console` or `json`.
 
-* `NAMESPACES` (default value: `default`). Comma separated list of namespace(s) to watch events from. Examples: (`ns1,ns2`).
+* `NAMESPACES` (default value: `default`). Comma separated list of namespace(s) to watch events from. If the value is `*`, watches all namespaces. Examples: (`ns1,ns2`).
 
 * `KUBECONFIG` (default value: ""). Path of a kube config. If empty, `k8s-events-logger` will create a in-cluster Kubernetes client and use the service account token to authenticate against the Kubernetes API.
 

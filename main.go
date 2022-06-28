@@ -74,7 +74,7 @@ func main() {
 	server := NewHealthzServer(cfg.GetString("APP_ADDR"))
 	server.SetRoutes()
 
-	log.Printf("Starting %s. Output = %s, Namespaces to watch %v\n",
+	log.Printf("Starting %s. Output = %s, Namespaces to watch = %v\n",
 		AppName,
 		cfg.GetString("OUTPUT"),
 		namespacestoWatch,
@@ -129,8 +129,11 @@ func UpdateEvent(objOld interface{}, objNew interface{}) {}
 func DeleteEvent(obj interface{}) {}
 
 func IsInNamespacesToWatch(namespace string, namespacesToWatch []string) bool {
+	if namespace == "*" {
+		return true
+	}
 	for _, v := range namespacesToWatch {
-		if namespace == v {
+		if (namespace == v) || (v == "*") {
 			return true
 		}
 	}
