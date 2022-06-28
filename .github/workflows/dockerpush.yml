@@ -1,11 +1,9 @@
 name: Docker push
 
-# on:
-#   push:
-#     # run only against tags
-#     tags:
-#       - '*'
 on:
+  push:
+    tags:
+      - '*'
   release:
     types: [published]
 
@@ -14,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  push:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +31,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ${{ env.GITHUB_ACTION_REPOSITORY }} # lescactus/k8s-events-logger
+        images: lescactus/k8s-events-logger
 
     - name: Build
       uses: docker/build-push-action@v3
