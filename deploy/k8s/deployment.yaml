@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: k8s-events-logger
-        image: k8s-events-logger
+        image: lescactus/k8s-events-logger
         resources:
           requests:
             memory: "8Mi"

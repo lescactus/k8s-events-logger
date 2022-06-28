@@ -6,7 +6,7 @@ build:
   local:
     push: false
   artifacts:
-  - image: k8s-events-logger
+  - image: lescactus/k8s-events-logger
     docker:
       dockerfile: Dockerfile
   tagPolicy:
