@@ -47,6 +47,30 @@ func TestIsInNamespacesToWatch(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "Wildcard namespaces to watch",
+			args: args{
+				namespace:         "ns1",
+				namespacesToWatch: []string{"*"},
+			},
+			want: true,
+		},
+		{
+			name: "Wildcard namespaces to watch",
+			args: args{
+				namespace:         "*",
+				namespacesToWatch: []string{"ns1", "ns2", "ns3"},
+			},
+			want: true,
+		},
+		{
+			name: "Wildcard namespaces to watch",
+			args: args{
+				namespace:         "ns1",
+				namespacesToWatch: []string{"*", "default"},
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

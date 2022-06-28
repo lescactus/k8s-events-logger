@@ -58,7 +58,7 @@ func TestHealthzServerHealthz(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	
+
 	data, err := ioutil.ReadAll(resp.Body)
 	assert.NoError(t, err)
 	assert.Equal(t, []byte(`{"status":200,"message":"Server ready and alive"}`), data)
