@@ -23,6 +23,8 @@ Enters `k8s-events-logger`: `k8s-events-logger` is meant to be running inside a 
 
 * `KUBECONFIG` (default value: ""). Path of a kube config. If empty, `k8s-events-logger` will create a in-cluster Kubernetes client and use the service account token to authenticate against the Kubernetes API.
 
+* `APP_ADDR` (default value: `:8080`). Listening address of the http server used for Kubernetes health endpoints.
+
 ## Building
 
 ### From source with go
