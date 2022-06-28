@@ -73,7 +73,6 @@ func main() {
 	// HTTP server for health endpoints
 	server := NewHealthzServer(cfg.GetString("APP_ADDR"))
 	server.SetRoutes()
-	go server.Run()
 
 	log.Printf("Starting %s. Output = %s, Namespaces to watch %v\n",
 		AppName,
@@ -97,6 +96,7 @@ func main() {
 		DeleteFunc: DeleteEvent,
 	})
 
+	go server.Run()
 	informer.Run(stopper)
 
 	<-stopper
