@@ -67,11 +67,15 @@ docker build -t k8s-events-logger .
 
 ## Installation
 
+### Kubernetes manifests
+
 `k8s-events-logger` comes with its Kubernetes manifests. They are located in `deploy/k8s/`.
 
 ```
 kubectl apply -f deploy/k8s/
 ```
+
+### Skaffold
 
 Alternatively, you can use [skaffold](https://skaffold.dev/) to build and deploy in Kubernetes:
 
@@ -93,8 +97,16 @@ Waiting for deployments to stabilize...
  - deployment/k8s-events-logger is ready.
 Deployments stabilized in 3.091 seconds
 You can also run [skaffold run --tail] to get the logs
+```
+
+### Helm
+
+`k8s-events-logger` also comes with its Helm chart. It's located in `deploy/helm/`.
 
 ```
+helm install k8s-events-logger deploy/helm
+```
+
 
 ## Examples
 
