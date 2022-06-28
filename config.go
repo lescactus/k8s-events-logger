@@ -53,6 +53,8 @@ func (config *AppConfig) setDefaults() {
 	config.SetDefault("APP_CONFIG_NAME", ".env")
 	config.SetDefault("APP_CONFIG_PATH", ".")
 
+	config.SetDefault("APP_ADDR", ":8080")
+
 	config.SetDefault("NAMESPACES", "default")
 	config.SetDefault("OUTPUT", "console") // Available: "console", "json"
 }

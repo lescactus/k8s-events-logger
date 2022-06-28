@@ -63,11 +63,17 @@ func main() {
 	stopper := make(chan struct{})
 	defer close(stopper)
 
+	// Kubernetes informers
 	factory := informers.NewSharedInformerFactory(clientset, 0)
 	eventsInformer := factory.Core().V1().Events()
 	informer := eventsInformer.Informer()
 
 	defer runtime.HandleCrash()
+
+	// HTTP server for health endpoints
+	server := NewHealthzServer(cfg.GetString("APP_ADDR"))
+	server.SetRoutes()
+	go server.Run()
 
 	log.Printf("Starting %s. Output = %s, Namespaces to watch %v\n",
 		AppName,
