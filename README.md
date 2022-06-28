@@ -1,4 +1,4 @@
-# k8s-events-logger [![Docker build](https://github.com/lescactus/k8s-events-logger/actions/workflows/dockerbuild.yml/badge.svg)](https://github.com/lescactus/k8s-events-logger/actions/workflows/dockerbuild.yml) [![Go](https://github.com/lescactus/k8s-events-logger/actions/workflows/go.yml/badge.svg)](https://github.com/lescactus/k8s-events-logger/actions/workflows/go.yml)
+# k8s-events-logger [![Docker build](https://github.com/lescactus/k8s-events-logger/actions/workflows/dockerbuild.yml/badge.svg)](https://github.com/lescactus/k8s-events-logger/actions/workflows/dockerbuild.yml) [![Go](https://github.com/lescactus/k8s-events-logger/actions/workflows/go.yml/badge.svg)](https://github.com/lescactus/k8s-events-logger/actions/workflows/go.yml) [![k8s](https://github.com/lescactus/k8s-events-logger/actions/workflows/k8s.yml/badge.svg)](https://github.com/lescactus/k8s-events-logger/actions/workflows/k8s.yml)
 
 This repository contains a simple Kubernetes controller displaying namespaces events to stdout.
 

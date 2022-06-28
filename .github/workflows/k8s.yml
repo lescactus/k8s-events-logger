@@ -1,0 +1,44 @@
+name: k8s
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    strategy:
+      matrix:
+        version: ["v1.19.16", "v1.20.7", "v1.21.12", "v1.22.9", "v1.23.6"]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Kubernetes
+        uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: v0.11.1
+          image: kindest/node:${{ matrix.version }}
+
+      - name: Cache skaffold image builds & config
+        uses: actions/cache@v2
+        with:
+          path: ~/.skaffold/
+          key: fixed
+        if: ${{ always() }}
+      
+      - name: Skaffold run
+        uses: hiberbee/github-action-skaffold@1.18.0
+        with:
+          command: run
+      
+      - name: Wait and read logs
+        shell: bash
+        run: |
+          sleep 10
+          kubectl logs deployment/k8s-events-logger
